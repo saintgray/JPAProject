@@ -4,6 +4,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
 
@@ -13,12 +14,13 @@ import javax.sql.DataSource;
  * @since "${date}"
  */
 @Configuration
+@EnableJpaRepositories(basePackages = { "com.jh.jpa.jpaservice.store" })
 public class DataSourceConfiguration {
 
     @Bean
     @Primary
     public DataSource mySqlDataSource() {
-        System.out.println("======= my SqlDataSource Initiated =======");
+        System.out.println("=================  mySqlDataSource initiated  =================");
         return DataSourceBuilder.create()
                                 .url("jdbc:mysql://database-op-mysql.colzvrncohgs.ap-northeast-2.rds.amazonaws.com:3306/dream?serverTimezone=UTC")
                                 .username("mnm")
