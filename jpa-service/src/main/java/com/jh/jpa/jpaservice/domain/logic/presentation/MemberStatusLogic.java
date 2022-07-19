@@ -21,6 +21,8 @@ public class MemberStatusLogic implements MemberListService {
 
     public List<MemberJpo> getMembers(){
 
+        // crash Test commit
+
         List<MemberJpo> list = null;
 //        List<MemberStatusDTO> results = null;
 //        list = this.memberJpaRepository.findAll();
