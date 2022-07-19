@@ -17,13 +17,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberStatusLogic implements MemberListService {
 
+    // test commit 1 in dev branch
+    // test commit 2 in dev branch
+
     private final MemberJpaRepository memberJpaRepository;
 
     public List<MemberJpo> getMembers(){
 
-        // crash Test commit
-
-        List<MemberJpo> list = null;
 //        List<MemberStatusDTO> results = null;
 //        list = this.memberJpaRepository.findAll();
 //        if(list!=null && !list.isEmpty()){
@@ -35,7 +35,7 @@ public class MemberStatusLogic implements MemberListService {
 //            }
 //        }
 //        return results;
-        return list;
+        return this.memberJpaRepository.findAll();
     }
 
     public List<MemberJpo> findByMEmailLike(String searched){
