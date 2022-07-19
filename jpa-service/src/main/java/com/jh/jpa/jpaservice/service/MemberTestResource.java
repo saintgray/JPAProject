@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 오종현
@@ -27,16 +28,16 @@ public class MemberTestResource {
 
     @GetMapping("/users")
     public List<MemberJpo> getUsers() {
+        return service.getMembers();
+    }
 
-        List<MemberJpo> members = null;
-        members = service.getMembers();
-        return members;
+    @GetMapping("/usersGroup/{groupingBy}")
+    public Map<String, List<MemberJpo>> getUsers(@PathVariable(name = "groupingBy") String groupingBy){
+        return service.getMembers(groupingBy);
     }
 
     @GetMapping("/users/{searched}")
     public List<MemberJpo> getUsersBySearched(@PathVariable(name = "searched") String searched){
-        List<MemberJpo> members = null;
-        members = service.findByMEmailLike(searched);
-        return members;
+        return service.findByMEmailLike(searched);
     }
 }

@@ -5,8 +5,12 @@ import com.jh.jpa.jpaservice.store.MemberJpaRepository;
 import com.jh.jpa.jpaservice.store.jpo.MemberJpo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * @author 오종현
@@ -38,9 +42,33 @@ public class MemberStatusLogic implements MemberListService {
         return this.memberJpaRepository.findAll();
     }
 
-    public List<MemberJpo> findByMEmailLike(String searched){
+    public List<MemberJpo> findByMEmailLike(String searched) {
 //        return this.memberJpaRepository.findBymEmailLike("%".concat(searched).concat("%"));
         return null;
+    }
+
+    @Override
+    public Map<String, List<MemberJpo>> getMembers(String groupingBy) {
+        List<MemberJpo> list = this.memberJpaRepository.findAll();
+        Map<String, List<MemberJpo>> usersGroup = null;
+        if (!ObjectUtils.isEmpty(list)) {
+            switch (groupingBy.toLowerCase()) {
+                case "location": {
+                    usersGroup = list.stream().collect(Collectors.groupingBy(MemberJpo::getLocIdx));
+                    break;
+                }
+                case "subscriber": {
+                    usersGroup = list.stream()
+                            .collect(Collectors.groupingBy(e ->
+                                    "Y".equals(e.getMAdyn()) ?
+                                            "subscriber" : "nonSubscriber"));
+                    break;
+                }
+                default: {
+                }
+            }
+        }
+        return usersGroup;
     }
 
 
