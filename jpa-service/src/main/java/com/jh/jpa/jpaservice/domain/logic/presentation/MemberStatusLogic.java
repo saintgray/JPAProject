@@ -18,6 +18,7 @@ import java.util.List;
 public class MemberStatusLogic implements MemberListService {
 
     // test commit 1 in dev branch
+    // test commit 2 in dev branch
 
     private final MemberJpaRepository memberJpaRepository;
 
