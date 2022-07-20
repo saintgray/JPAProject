@@ -1,5 +1,6 @@
 package com.jh.jpa.jpaservice.store.jpo;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
  * @author 오종현
@@ -54,6 +55,26 @@ public class MemberTestResource {
             result = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("올바른 그룹 기준을 선택하세요");
         }else {
             result = ResponseEntity.ok(usersGroup);
+        }
+        return result;
+    }
+
+
+    @GetMapping("/uers/{groupingBy}/{queryDslSelected}")
+    public ResponseEntity<?> getUsers(@PathVariable(name = "groupingBy") String groupingBy,
+                                      @PathVariable(name = "queryDslSelected") String selected) {
+        ResponseEntity<?> result = null;
+        if (!selected.equalsIgnoreCase("Y")) {
+            result = getUsers(groupingBy);
+        } else {
+            try{
+                Map<String, List<MemberJpo>> usersGroup = service.getMembersByQueryDsl(groupingBy);
+                if (ObjectUtils.isEmpty(usersGroup)) {
+                    result = ResponseEntity.ok(usersGroup);
+                }
+            }catch(NoSuchElementException e){
+                result = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("올바른 그룹 기준을 선택하세요");
+            }
         }
         return result;
     }
