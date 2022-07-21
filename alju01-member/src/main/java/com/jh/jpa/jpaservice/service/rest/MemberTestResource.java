@@ -1,4 +1,4 @@
-package com.jh.jpa.jpaservice.service;
+package com.jh.jpa.jpaservice.service.rest;
 
 import com.jh.jpa.jpaservice.domain.exception.InvalidParamsException;
 import com.jh.jpa.jpaservice.domain.spec.presentation.MemberListService;

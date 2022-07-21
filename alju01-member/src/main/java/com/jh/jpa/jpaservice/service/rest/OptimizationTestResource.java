@@ -1,4 +1,4 @@
-package com.jh.jpa.jpaservice.service;
+package com.jh.jpa.jpaservice.service.rest;
 
 
 import com.jh.jpa.jpaservice.store.jpo.MemberJpo;

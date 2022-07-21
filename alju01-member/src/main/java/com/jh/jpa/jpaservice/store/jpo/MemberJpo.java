@@ -50,6 +50,7 @@ public class MemberJpo {
     private String tempcode;
 
     @OneToMany
+    @JoinColumn(name ="m_idx")
     private List<PostJpo> posts;
 
     public boolean isSubscriber(){
