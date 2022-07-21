@@ -3,13 +3,12 @@ package com.jh.jpa.shareutil.util;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jh.jpa.shareutil.config.SpringfoxJsonToGsonAdapter;
+import com.jh.jpa.shareutil.entity.vo.config.SpringfoxJsonToGsonAdapter;
 import org.apache.commons.lang3.StringUtils;
 import springfox.documentation.spring.web.json.Json;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.sql.Timestamp;
 import java.util.*;
 
 /**
