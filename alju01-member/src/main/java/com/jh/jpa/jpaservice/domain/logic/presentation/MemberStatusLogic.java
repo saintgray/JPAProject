@@ -4,6 +4,7 @@ import com.jh.jpa.jpaservice.domain.exception.InvalidParamsException;
 import com.jh.jpa.jpaservice.domain.spec.presentation.MemberListService;
 import com.jh.jpa.jpaservice.store.MemberJpaRepository;
 import com.jh.jpa.jpaservice.store.jpo.MemberJpo;
+import com.jh.jpa.jpaservice.store.jpo.PostJpo;
 import com.jh.jpa.jpaservice.store.jpo.QMemberJpo;
 import com.jh.jpa.jpaservice.store.jpo.QPostJpo;
 import com.querydsl.core.Tuple;
@@ -86,12 +87,12 @@ public class MemberStatusLogic implements MemberListService {
         List<Tuple> list =
                 jpaQueryFactory.select(member.mEmail,
                                 member.locIdx,
-                                member.mNm,
-                                post.postNm,
-                                post.postRegdate)
+                                member.mNm)
+//                                post.postNm,
+//                                post.postRegdate)
                         .from(member)
-                        .join(post)
-                        .on(post.mIdx.eq(member.mIdx))
+//                        .join(post)
+//                        .on(post.mIdx.eq(member.mIdx))
                         .fetch();
         System.out.println(list);
 

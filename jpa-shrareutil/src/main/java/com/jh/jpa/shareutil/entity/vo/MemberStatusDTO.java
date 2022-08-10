@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 public class MemberStatusDTO {
+    
 
     private BigDecimal mIdx;
     private String mEmail;
