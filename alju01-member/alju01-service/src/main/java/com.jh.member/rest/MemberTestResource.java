@@ -9,17 +9,17 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 /**
  * @author 오종현
@@ -77,5 +77,10 @@ public class MemberTestResource {
     @GetMapping("/{id}")
     public MemberJpo test(@PathVariable(value ="id")String id){
         return service.register(id);
+    }
+
+    @PostMapping("")
+    public MemberJpo saveUser(@RequestBody MemberJpo entity) {
+        return this.service.saveUser(entity);
     }
 }

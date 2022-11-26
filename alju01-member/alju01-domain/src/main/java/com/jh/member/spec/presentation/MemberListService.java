@@ -20,4 +20,6 @@ public interface MemberListService {
     Map<String, List<MemberJpo>> getMembers(String groupingBy) throws InvalidParamsException;
 
     MemberJpo register(String id);
+
+    MemberJpo saveUser(MemberJpo entity);
 }

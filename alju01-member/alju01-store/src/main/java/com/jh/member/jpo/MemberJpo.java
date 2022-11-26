@@ -25,8 +25,8 @@ import java.sql.Timestamp;
 @Entity(name = "member")
 @Table(name = "member")
 @IdClass(MemberJpoKey.class)
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
 @Setter
@@ -40,13 +40,13 @@ public class MemberJpo {
     private String usrEmail;
     @Column(name = "m_nm")
     private String usrNm;
-    @Column(name = "m_photo")
+    @Column(name = "m_photo", updatable = false)
     private String usrPhoto;
-    @Column(name = "m_regdate")
-    @JsonFormat(pattern = "yyyy-MM-dd HH25:mm:ss")
+    @Column(name = "m_regdate",updatable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp usrRegDtae;
     @Column(name = "m_quitdate")
-    @JsonFormat(pattern = "yyyy-MM-dd HH25:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp mQuitdate;
     @Column(name = "m_adyn")
     private String mAdyn;
@@ -57,7 +57,7 @@ public class MemberJpo {
     @Column(name = "tempcode")
     private String tempcode;
 
-//    @OneToMany
+    //    @OneToMany
 //    @JoinColumn(name ="m_idx")
 //    private List<PostJpo> posts;
 
