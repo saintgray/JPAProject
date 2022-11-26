@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    # TODO : datasource url, username, password
+    url: url
+    username: username
+    password: password
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+swagger:
+  basePackage: 'com.jh.member'
+  title: 'alju01-member'
+  description: 'alju01-member api document & api tester'
+  termsOfServiceUrl: ''
