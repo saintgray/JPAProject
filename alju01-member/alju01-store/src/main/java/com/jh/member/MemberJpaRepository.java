@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface MemberJpaRepository extends JpaRepository<MemberJpo, BigDecimal> {
 
-    List<MemberJpo> findBymEmailLike(String searched);
+    List<MemberJpo> findByUsrEmailLike(String searched);
 }
