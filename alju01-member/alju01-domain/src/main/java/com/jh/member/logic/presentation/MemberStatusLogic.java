@@ -74,7 +74,7 @@ public class MemberStatusLogic implements MemberListService {
     @Override
     public MemberJpo register(String id) {
         MemberJpo jpo = new MemberJpo();
-        jpo.setMIdx(new BigDecimal(1));
+        jpo.setIdx(new BigDecimal(1));
         return this.memberJpaRepository.save(jpo);
     }
 }

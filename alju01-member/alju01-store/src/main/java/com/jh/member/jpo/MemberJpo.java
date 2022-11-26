@@ -1,5 +1,6 @@
 package com.jh.member.jpo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.jh.member.jpo.key.MemberJpoKey;
 import lombok.AllArgsConstructor;
@@ -32,19 +33,20 @@ import java.sql.Timestamp;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MemberJpo {
 
-
-
     @Id
-    private BigDecimal mIdx;
+    @Column(name = "m_idx")
+    private BigDecimal idx;
     @Column(name = "m_email")
-    private String mEmail;
+    private String usrEmail;
     @Column(name = "m_nm")
-    private String mNm;
+    private String usrNm;
     @Column(name = "m_photo")
-    private String mPhoto;
+    private String usrPhoto;
     @Column(name = "m_regdate")
-    private Timestamp mRegdate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH25:mm:ss")
+    private Timestamp usrRegDtae;
     @Column(name = "m_quitdate")
+    @JsonFormat(pattern = "yyyy-MM-dd HH25:mm:ss")
     private Timestamp mQuitdate;
     @Column(name = "m_adyn")
     private String mAdyn;
