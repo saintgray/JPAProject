@@ -53,7 +53,7 @@ public class MemberStatusLogic implements MemberListService {
         if (!ObjectUtils.isEmpty(list)) {
             switch (groupingBy.toLowerCase()) {
                 case "location": {
-                    usersGroup = list.stream().collect(Collectors.groupingBy(MemberJpo::getLocIdx));
+                    usersGroup = list.stream().filter(member -> !ObjectUtils.isEmpty(member.getLocIdx())).collect(Collectors.groupingBy(MemberJpo::getLocIdx));
                     break;
                 }
                 case "subscriber": {
@@ -68,6 +68,7 @@ public class MemberStatusLogic implements MemberListService {
                 }
             }
         }
+        // todo dfdsf
         return usersGroup;
     }
 
