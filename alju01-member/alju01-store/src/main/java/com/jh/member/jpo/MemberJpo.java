@@ -33,6 +33,7 @@ import java.sql.Timestamp;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MemberJpo {
 
+
     @Id
     @Column(name = "m_idx")
     private BigDecimal idx;

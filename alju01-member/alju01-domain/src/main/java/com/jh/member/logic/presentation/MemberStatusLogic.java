@@ -53,7 +53,9 @@ public class MemberStatusLogic implements MemberListService {
         if (!ObjectUtils.isEmpty(list)) {
             switch (groupingBy.toLowerCase()) {
                 case "location": {
-                    usersGroup = list.stream().filter(member -> !ObjectUtils.isEmpty(member.getLocIdx())).collect(Collectors.groupingBy(MemberJpo::getLocIdx));
+                    usersGroup = list.stream().filter(member -> !ObjectUtils.isEmpty(member.getLocIdx()))
+                            .filter(member -> "Y".equals(member.getMBlacklist()))
+                            .collect(Collectors.groupingBy(MemberJpo::getLocIdx));
                     break;
                 }
                 case "subscriber": {
